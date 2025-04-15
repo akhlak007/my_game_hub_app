@@ -8,7 +8,34 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('My Game Hub')),
+      // Customized modern AppBar
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'My Game Hub',
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            // Gradient background for a modern look
+            gradient: LinearGradient(
+              colors: [Colors.blueAccent, Colors.purpleAccent],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        // Rounded bottom corners for added style
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+        ),
+        elevation: 5,
+      ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -21,7 +48,9 @@ class HomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: NetworkImage('https://th.bing.com/th/id/OIP.H3xtG6yIEQQRlzpb4gSjHgHaF3?rs=1&pid=ImgDetMain'),
+                    image: NetworkImage(
+                      'https://th.bing.com/th/id/OIP.H3xtG6yIEQQRlzpb4gSjHgHaF3?rs=1&pid=ImgDetMain',
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -38,7 +67,8 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     _gameCard(
                       context,
-                      imageUrl: 'https://th.bing.com/th/id/R.23b9284bc6ade2335812e553dfdb77a9?rik=ENVN8m2m1PsS5g&pid=ImgRaw&r=0', // Replace with actual image URL
+                      imageUrl:
+                      'https://th.bing.com/th/id/R.23b9284bc6ade2335812e553dfdb77a9?rik=ENVN8m2m1PsS5g&pid=ImgRaw&r=0', // Replace with actual image URL
                       title: 'Flappy Bird',
                       onTap: () {
                         Navigator.push(
@@ -49,7 +79,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                     _gameCard(
                       context,
-                      imageUrl: 'https://th.bing.com/th/id/OIP.-f8QjCI1Q5Ix8mbMeTxMxAHaHa?rs=1&pid=ImgDetMain', // Replace with actual image URL
+                      imageUrl:
+                      'https://th.bing.com/th/id/OIP.-f8QjCI1Q5Ix8mbMeTxMxAHaHa?rs=1&pid=ImgDetMain', // Replace with actual image URL
                       title: 'Fruit ninja',
                       onTap: () {
                         Navigator.push(
@@ -60,19 +91,21 @@ class HomeScreen extends StatelessWidget {
                     ),
                     _gameCard(
                       context,
-                      imageUrl: 'https://th.bing.com/th/id/R.35dd4fb2a76b61c0af6805390d03d0de?rik=15IgmnxLZ4AIJA&pid=ImgRaw&r=0', // Replace with actual image URL
+                      imageUrl:
+                      'https://th.bing.com/th/id/R.35dd4fb2a76b61c0af6805390d03d0de?rik=15IgmnxLZ4AIJA&pid=ImgRaw&r=0', // Replace with actual image URL
                       title: 'Tower Of Hanoi',
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => GameThreeApp()),
+                          MaterialPageRoute(
+                              builder: (context) => GameThreeApp()),
                         );
                       },
                     ),
                     _gameCard(
                       context,
-                      imageUrl: 'https://th.bing.com/th/id/R.cf7e0046ccef46771d24c7e85792efdd?rik=i2yGbMDOUPo6dw&pid=ImgRaw&r=0',
-                      //imageUrl: 'https://www.bing.com/images/search?view=detailV2&ccid=HoRmgXA8&id=F0BAF4E16335DD1B15C950DC593F25F1A57FFF46&thid=OIP.HoRmgXA8R0mSq2loS85WLwHaHa&mediaurl=https%3a%2f%2fplay-lh.googleusercontent.com%2f5ENdgpFsRhQt9y_ySp9UK_p-CL0TmhSwW5pKmmzzIW0OLFR3EvAtzAGm6c_IkkfgVg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.1e846681703c474992ab69684bce562f%3frik%3dRv9%252fpfElP1ncUA%26pid%3dImgRaw%26r%3d0&exph=512&expw=512&q=tic+tac+toe+picture&simid=608052582901811319&FORM=IRPRST&ck=A6C957B5F3924DE12C41EC8F90BAF21C&selectedIndex=9&itb=0', // Replace with actual image URL
+                      imageUrl:
+                      'https://th.bing.com/th/id/R.cf7e0046ccef46771d24c7e85792efdd?rik=i2yGbMDOUPo6dw&pid=ImgRaw&r=0',
                       title: 'Tic Tac Toe',
                       onTap: () {
                         Navigator.push(
@@ -91,8 +124,12 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _gameCard(BuildContext context,
-      {required String imageUrl, required String title, required VoidCallback onTap}) {
+  Widget _gameCard(
+      BuildContext context, {
+        required String imageUrl,
+        required String title,
+        required VoidCallback onTap,
+      }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
